@@ -34,36 +34,38 @@ function BookingForm({ onCreated }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="booking-form">
+    <form onSubmit={handleSubmit} className="card booking-form">
       <h2>Időpontfoglalás</h2>
 
-      <label>
-        Dátum
-        <input
-          type="date"
-          value={date}
-          min={today}
-          onChange={(e) => setDate(e.target.value)}
-          required
-        />
-      </label>
+      <div className="form-row">
+        <label>
+          Dátum
+          <input
+            type="date"
+            value={date}
+            min={today}
+            onChange={(e) => setDate(e.target.value)}
+            required
+          />
+        </label>
 
-      <label>
-        Időpont
-        <input
-          type="time"
-          value={startTime}
-          onChange={(e) => setStartTime(e.target.value)}
-          required
-        />
-      </label>
+        <label>
+          Időpont
+          <input
+            type="time"
+            value={startTime}
+            onChange={(e) => setStartTime(e.target.value)}
+            required
+          />
+        </label>
+      </div>
 
-      <button type="submit" disabled={loading}>
+      <button type="submit" className="btn-primary" disabled={loading}>
         {loading ? "Küldés..." : "Foglalás"}
       </button>
 
-      {success && <p className="success">Sikeres foglalás!</p>}
-      {error && <p className="error">{error}</p>}
+      {success && <p className="alert alert-success">Sikeres foglalás!</p>}
+      {error && <p className="alert alert-error">{error}</p>}
     </form>
   );
 }
